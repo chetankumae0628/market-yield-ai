@@ -14,7 +14,10 @@ const Index = () => {
           Help farmers forecast local market demand and prevent crop gluts with AI-driven insights
         </p>
         <div className="space-y-4">
-          <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors">
+          <button 
+            onClick={() => window.location.href = '/auth'}
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors"
+          >
             Get Started
           </button>
           <p className="text-sm text-gray-400">
