@@ -37,17 +37,17 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-background dark">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-card shadow-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
               <div className="text-2xl">🌾</div>
-              <h1 className="text-xl font-bold text-gray-900">AgriForecast</h1>
+              <h1 className="text-xl font-bold text-foreground">AgriForecast</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <Badge variant="secondary" className="bg-green-100 text-green-800">
+              <Badge variant="secondary">
                 <Bell className="w-4 h-4 mr-1" />
                 3 New Alerts
               </Badge>
@@ -62,10 +62,10 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Smarter Farming Decisions with AI
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Get real-time market insights, demand forecasts, and AI-powered crop recommendations
             to maximize your farming profits.
           </p>
@@ -73,50 +73,50 @@ const Dashboard = () => {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white">
+          <Card className="bg-accent border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-green-100">Total Crops</p>
-                  <p className="text-2xl font-bold">12</p>
+                  <p className="text-muted-foreground">Total Crops</p>
+                  <p className="text-2xl font-bold text-foreground">12</p>
                 </div>
-                <Leaf className="w-8 h-8 text-green-100" />
+                <Leaf className="w-8 h-8 text-muted-foreground" />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+          <Card className="bg-accent border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-100">Active Alerts</p>
-                  <p className="text-2xl font-bold">3</p>
+                  <p className="text-muted-foreground">Active Alerts</p>
+                  <p className="text-2xl font-bold text-foreground">3</p>
                 </div>
-                <Bell className="w-8 h-8 text-blue-100" />
+                <Bell className="w-8 h-8 text-muted-foreground" />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+          <Card className="bg-accent border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-orange-100">Market Score</p>
-                  <p className="text-2xl font-bold">8.5/10</p>
+                  <p className="text-muted-foreground">Market Score</p>
+                  <p className="text-2xl font-bold text-foreground">8.5/10</p>
                 </div>
-                <TrendingUp className="w-8 h-8 text-orange-100" />
+                <TrendingUp className="w-8 h-8 text-muted-foreground" />
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+          <Card className="bg-accent border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-purple-100">Nearby Markets</p>
-                  <p className="text-2xl font-bold">7</p>
+                  <p className="text-muted-foreground">Nearby Markets</p>
+                  <p className="text-2xl font-bold text-foreground">7</p>
                 </div>
-                <MapPin className="w-8 h-8 text-purple-100" />
+                <MapPin className="w-8 h-8 text-muted-foreground" />
               </div>
             </CardContent>
           </Card>
@@ -144,13 +144,13 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {alerts.map((alert, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-gray-50">
-                      {alert.type === "success" && <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />}
-                      {alert.type === "warning" && <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />}
-                      {alert.type === "info" && <Bell className="w-5 h-5 text-blue-600 mt-0.5" />}
+                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-muted">
+                      {alert.type === "success" && <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />}
+                      {alert.type === "warning" && <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />}
+                      {alert.type === "info" && <Bell className="w-5 h-5 text-blue-400 mt-0.5" />}
                       <div className="flex-1">
-                        <p className="text-sm text-gray-900">{alert.message}</p>
-                        <p className="text-xs text-gray-500 mt-1">{alert.time}</p>
+                        <p className="text-sm text-foreground">{alert.message}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{alert.time}</p>
                       </div>
                     </div>
                   ))}
@@ -164,19 +164,19 @@ const Dashboard = () => {
                   <CardDescription>Get instant insights for your farming decisions</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button className="w-full justify-start bg-green-600 hover:bg-green-700" size="lg">
+                  <Button className="w-full justify-start" size="lg">
                     <BarChart3 className="w-5 h-5 mr-2" />
                     View Demand Forecast
                   </Button>
-                  <Button className="w-full justify-start bg-blue-600 hover:bg-blue-700" size="lg">
+                  <Button className="w-full justify-start" variant="secondary" size="lg">
                     <Leaf className="w-5 h-5 mr-2" />
                     Get Crop Recommendations
                   </Button>
-                  <Button className="w-full justify-start bg-orange-600 hover:bg-orange-700" size="lg">
+                  <Button className="w-full justify-start" variant="outline" size="lg">
                     <Calendar className="w-5 h-5 mr-2" />
                     Check Sell Timing
                   </Button>
-                  <Button className="w-full justify-start bg-purple-600 hover:bg-purple-700" size="lg">
+                  <Button className="w-full justify-start" variant="secondary" size="lg">
                     <MapPin className="w-5 h-5 mr-2" />
                     Find Best Markets
                   </Button>
@@ -197,19 +197,19 @@ const Dashboard = () => {
               <CardContent>
                 <div className="space-y-4">
                   {demandData.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                    <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted transition-colors">
                       <div className="flex items-center space-x-4">
                         <div className="text-2xl">🍅</div>
                         <div>
-                          <h3 className="font-semibold">{item.crop}</h3>
+                          <h3 className="font-semibold text-foreground">{item.crop}</h3>
                           <Badge variant={item.demand === "High" ? "default" : item.demand === "Medium" ? "secondary" : "outline"}>
                             {item.demand} Demand
                           </Badge>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold">{item.price}</p>
-                        <p className={`text-sm ${item.change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
+                        <p className="font-semibold text-foreground">{item.price}</p>
+                        <p className={`text-sm ${item.change.startsWith('+') ? 'text-green-400' : 'text-red-400'}`}>
                           {item.change}
                         </p>
                       </div>
@@ -232,18 +232,18 @@ const Dashboard = () => {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {recommendations.map((rec, index) => (
-                    <Card key={index} className="border-2 hover:shadow-lg transition-all duration-200">
+                    <Card key={index} className="border-2 border-border hover:shadow-lg transition-all duration-200">
                       <CardContent className="p-6 text-center">
                         <div className="text-4xl mb-4">🌶️</div>
-                        <h3 className="font-semibold text-lg mb-2">{rec.crop}</h3>
+                        <h3 className="font-semibold text-lg mb-2 text-foreground">{rec.crop}</h3>
                         <Badge 
                           variant={rec.rating === "Excellent" ? "default" : rec.rating === "Good" ? "secondary" : "outline"}
                           className="mb-2"
                         >
                           {rec.rating}
                         </Badge>
-                        <p className="text-sm text-gray-600 mb-2">Plant: {rec.season}</p>
-                        <p className="text-sm font-medium">Expected Profit: {rec.profit}</p>
+                        <p className="text-sm text-muted-foreground mb-2">Plant: {rec.season}</p>
+                        <p className="text-sm font-medium text-foreground">Expected Profit: {rec.profit}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -263,32 +263,32 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="p-4 border rounded-lg bg-green-50 border-green-200">
+                  <div className="p-4 border border-border rounded-lg bg-muted">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-600" />
+                      <CheckCircle className="w-6 h-6 text-green-400" />
                       <div>
-                        <h3 className="font-semibold text-green-800">Tomatoes - Sell Now</h3>
-                        <p className="text-sm text-green-700">High demand, prices at peak. Recommended action: Sell immediately.</p>
+                        <h3 className="font-semibold text-foreground">Tomatoes - Sell Now</h3>
+                        <p className="text-sm text-muted-foreground">High demand, prices at peak. Recommended action: Sell immediately.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="p-4 border rounded-lg bg-yellow-50 border-yellow-200">
+                  <div className="p-4 border border-border rounded-lg bg-muted">
                     <div className="flex items-center space-x-3">
-                      <AlertTriangle className="w-6 h-6 text-yellow-600" />
+                      <AlertTriangle className="w-6 h-6 text-yellow-400" />
                       <div>
-                        <h3 className="font-semibold text-yellow-800">Onions - Hold for 1 Week</h3>
-                        <p className="text-sm text-yellow-700">Prices expected to rise by 8-12% next week due to supply shortage.</p>
+                        <h3 className="font-semibold text-foreground">Onions - Hold for 1 Week</h3>
+                        <p className="text-sm text-muted-foreground">Prices expected to rise by 8-12% next week due to supply shortage.</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="p-4 border rounded-lg bg-red-50 border-red-200">
+                  <div className="p-4 border border-border rounded-lg bg-muted">
                     <div className="flex items-center space-x-3">
-                      <AlertTriangle className="w-6 h-6 text-red-600" />
+                      <AlertTriangle className="w-6 h-6 text-red-400" />
                       <div>
-                        <h3 className="font-semibold text-red-800">Potatoes - Monitor Closely</h3>
-                        <p className="text-sm text-red-700">Market volatility detected. Consider selling 50% now, hold rest.</p>
+                        <h3 className="font-semibold text-foreground">Potatoes - Monitor Closely</h3>
+                        <p className="text-sm text-muted-foreground">Market volatility detected. Consider selling 50% now, hold rest.</p>
                       </div>
                     </div>
                   </div>
@@ -313,19 +313,19 @@ const Dashboard = () => {
                     { name: "Ghazipur Market", distance: "18 km", demand: "Medium", price: "Average" },
                     { name: "Okhla Mandi", distance: "25 km", demand: "High", price: "Premium" },
                   ].map((market, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                    <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted transition-colors">
                       <div className="flex items-center space-x-4">
-                        <MapPin className="w-8 h-8 text-blue-600" />
+                        <MapPin className="w-8 h-8 text-blue-400" />
                         <div>
-                          <h3 className="font-semibold">{market.name}</h3>
-                          <p className="text-sm text-gray-600">{market.distance} away</p>
+                          <h3 className="font-semibold text-foreground">{market.name}</h3>
+                          <p className="text-sm text-muted-foreground">{market.distance} away</p>
                         </div>
                       </div>
                       <div className="text-right">
                         <Badge variant={market.demand === "High" ? "default" : "secondary"}>
                           {market.demand} Demand
                         </Badge>
-                        <p className="text-sm text-gray-600 mt-1">{market.price}</p>
+                        <p className="text-sm text-muted-foreground mt-1">{market.price}</p>
                       </div>
                     </div>
                   ))}
