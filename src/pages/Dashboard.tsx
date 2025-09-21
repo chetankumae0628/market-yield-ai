@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +14,16 @@ import {
   AlertTriangle,
   CheckCircle
 } from "lucide-react";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { 
+  PriceTrendChart, 
+  YieldVsDemandChart, 
+  MarketShareChart, 
+  ProfitAnalysisChart 
+} from "@/components/charts/MarketCharts";
+import { SearchWithFilters } from "@/components/search/SearchWithFilters";
+import { AnimatedCard, StaggerContainer, StaggerItem } from "@/components/ui/animated-components";
+import { Chatbot } from "@/components/chat/Chatbot";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -37,105 +48,89 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background dark">
-      {/* Header */}
-      <header className="bg-card shadow-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl">🌾</div>
-              <h1 className="text-xl font-bold text-foreground">AgriForecast</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Badge variant="secondary">
-                <Bell className="w-4 h-4 mr-1" />
-                3 New Alerts
-              </Badge>
-              <Button variant="outline" size="sm">
-                Profile
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <DashboardLayout currentPage="dashboard">
+      <StaggerContainer className="space-y-6">
         {/* Hero Section */}
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Smarter Farming Decisions with AI
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get real-time market insights, demand forecasts, and AI-powered crop recommendations
-            to maximize your farming profits.
-          </p>
-        </div>
+        <StaggerItem>
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Smarter Farming Decisions with AI
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Get real-time market insights, demand forecasts, and AI-powered crop recommendations
+              to maximize your farming profits.
+            </p>
+          </div>
+        </StaggerItem>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-accent border-border">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground">Total Crops</p>
-                  <p className="text-2xl font-bold text-foreground">12</p>
+        <StaggerItem>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <AnimatedCard delay={0.1}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-muted-foreground">Total Crops</p>
+                    <p className="text-2xl font-bold text-foreground">12</p>
+                  </div>
+                  <Leaf className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <Leaf className="w-8 h-8 text-muted-foreground" />
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-accent border-border">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground">Active Alerts</p>
-                  <p className="text-2xl font-bold text-foreground">3</p>
+              </CardContent>
+            </AnimatedCard>
+            
+            <AnimatedCard delay={0.2}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-muted-foreground">Active Alerts</p>
+                    <p className="text-2xl font-bold text-foreground">3</p>
+                  </div>
+                  <Bell className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <Bell className="w-8 h-8 text-muted-foreground" />
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-accent border-border">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground">Market Score</p>
-                  <p className="text-2xl font-bold text-foreground">8.5/10</p>
+              </CardContent>
+            </AnimatedCard>
+            
+            <AnimatedCard delay={0.3}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-muted-foreground">Market Score</p>
+                    <p className="text-2xl font-bold text-foreground">8.5/10</p>
+                  </div>
+                  <TrendingUp className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <TrendingUp className="w-8 h-8 text-muted-foreground" />
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-accent border-border">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground">Nearby Markets</p>
-                  <p className="text-2xl font-bold text-foreground">7</p>
+              </CardContent>
+            </AnimatedCard>
+            
+            <AnimatedCard delay={0.4}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-muted-foreground">Nearby Markets</p>
+                    <p className="text-2xl font-bold text-foreground">7</p>
+                  </div>
+                  <MapPin className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <MapPin className="w-8 h-8 text-muted-foreground" />
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              </CardContent>
+            </AnimatedCard>
+          </div>
+        </StaggerItem>
 
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="forecast">Demand Forecast</TabsTrigger>
             <TabsTrigger value="recommendations">Crop Recommendations</TabsTrigger>
             <TabsTrigger value="timing">Sell Timing</TabsTrigger>
             <TabsTrigger value="markets">Best Markets</TabsTrigger>
+            <TabsTrigger value="search">Search</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Recent Alerts */}
-              <Card>
+              <AnimatedCard delay={0.1}>
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <Bell className="w-5 h-5" />
@@ -144,7 +139,13 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {alerts.map((alert, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-muted">
+                    <motion.div 
+                      key={index} 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-start space-x-3 p-3 rounded-lg bg-muted"
+                    >
                       {alert.type === "success" && <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />}
                       {alert.type === "warning" && <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />}
                       {alert.type === "info" && <Bell className="w-5 h-5 text-blue-400 mt-0.5" />}
@@ -152,36 +153,50 @@ const Dashboard = () => {
                         <p className="text-sm text-foreground">{alert.message}</p>
                         <p className="text-xs text-muted-foreground mt-1">{alert.time}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </CardContent>
-              </Card>
+              </AnimatedCard>
 
               {/* Quick Actions */}
-              <Card>
+              <AnimatedCard delay={0.2}>
                 <CardHeader>
                   <CardTitle>Quick Actions</CardTitle>
                   <CardDescription>Get instant insights for your farming decisions</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button className="w-full justify-start" size="lg">
-                    <BarChart3 className="w-5 h-5 mr-2" />
-                    View Demand Forecast
-                  </Button>
-                  <Button className="w-full justify-start" variant="secondary" size="lg">
-                    <Leaf className="w-5 h-5 mr-2" />
-                    Get Crop Recommendations
-                  </Button>
-                  <Button className="w-full justify-start" variant="outline" size="lg">
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Check Sell Timing
-                  </Button>
-                  <Button className="w-full justify-start" variant="secondary" size="lg">
-                    <MapPin className="w-5 h-5 mr-2" />
-                    Find Best Markets
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button className="w-full justify-start" size="lg">
+                      <BarChart3 className="w-5 h-5 mr-2" />
+                      View Demand Forecast
+                    </Button>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button className="w-full justify-start" variant="secondary" size="lg">
+                      <Leaf className="w-5 h-5 mr-2" />
+                      Get Crop Recommendations
+                    </Button>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button className="w-full justify-start" variant="outline" size="lg">
+                      <Calendar className="w-5 h-5 mr-2" />
+                      Check Sell Timing
+                    </Button>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button className="w-full justify-start" variant="secondary" size="lg">
+                      <MapPin className="w-5 h-5 mr-2" />
+                      Find Best Markets
+                    </Button>
+                  </motion.div>
                 </CardContent>
-              </Card>
+              </AnimatedCard>
+            </div>
+            
+            {/* Charts Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <PriceTrendChart />
+              <YieldVsDemandChart />
             </div>
           </TabsContent>
 
@@ -298,7 +313,7 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="markets" className="space-y-6">
-            <Card>
+            <AnimatedCard delay={0.1}>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <MapPin className="w-5 h-5" />
@@ -313,7 +328,13 @@ const Dashboard = () => {
                     { name: "Ghazipur Market", distance: "18 km", demand: "Medium", price: "Average" },
                     { name: "Okhla Mandi", distance: "25 km", demand: "High", price: "Premium" },
                   ].map((market, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted transition-colors">
+                    <motion.div 
+                      key={index} 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted transition-colors"
+                    >
                       <div className="flex items-center space-x-4">
                         <MapPin className="w-8 h-8 text-blue-400" />
                         <div>
@@ -327,15 +348,22 @@ const Dashboard = () => {
                         </Badge>
                         <p className="text-sm text-muted-foreground mt-1">{market.price}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </CardContent>
-            </Card>
+            </AnimatedCard>
+          </TabsContent>
+
+          <TabsContent value="search" className="space-y-6">
+            <SearchWithFilters />
           </TabsContent>
         </Tabs>
-      </div>
-    </div>
+      </StaggerContainer>
+      
+      {/* Floating Chatbot */}
+      <Chatbot />
+    </DashboardLayout>
   );
 };
 
